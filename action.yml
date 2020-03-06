@@ -1,10 +1,13 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Linode cli'
+description: 'Make the Linode cli available to your workflow'
+author: 'Brendon Lees'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  LINODE_CLI_TOKEN:
+    description: 'linode cli token'
+    required: true
+branding:
+  icon: 'terminal'
+  color: 'green'
 runs:
   using: 'node12'
   main: 'dist/index.js'
