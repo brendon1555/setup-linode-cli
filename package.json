@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "description": "Github Action to add Linode cli to your workflow",
-  "main": "dist/index.js",
+  "main": "lib/setup-python.js",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write **/*.ts",
