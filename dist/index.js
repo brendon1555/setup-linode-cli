@@ -2460,6 +2460,8 @@ const os = __importStar(__webpack_require__(87));
 const path = __importStar(__webpack_require__(622));
 const child_process_1 = __webpack_require__(129);
 const semver = __importStar(__webpack_require__(876));
+const core = __importStar(__webpack_require__(470));
+const tc = __importStar(__webpack_require__(533));
 let cacheDirectory = process.env['RUNNER_TOOLSDIRECTORY'] || '';
 if (!cacheDirectory) {
     let baseLocation;
@@ -2477,8 +2479,6 @@ if (!cacheDirectory) {
     }
     cacheDirectory = path.join(baseLocation, 'actions', 'cache');
 }
-const core = __importStar(__webpack_require__(470));
-const tc = __importStar(__webpack_require__(533));
 const IS_WINDOWS = process.platform === 'win32';
 // Python has "scripts" or "bin" directories where command-line tools that come with packages are installed.
 // This is where pip is, along with anything that pip installs.
@@ -2557,9 +2557,9 @@ function useCpythonVersion(version, architecture) {
             // Add --user directory
             // `installDir` from tool cache should look like $AGENT_TOOLSDIRECTORY/Python/<semantic version>/x64/
             // So if `findLocalTool` succeeded above, we must have a conformant `installDir`
-            const version = path.basename(path.dirname(installDir));
-            const major = semver.major(version);
-            const minor = semver.minor(version);
+            const version_ = path.basename(path.dirname(installDir));
+            const major = semver.major(version_);
+            const minor = semver.minor(version_);
             const userScriptsDir = path.join(process.env['APPDATA'] || '', 'Python', `Python${major}${minor}`, 'Scripts');
             core.addPath(userScriptsDir);
         }
@@ -5725,6 +5725,8 @@ function run() {
         try {
             yield finder.enableAllPythonVersions();
             const matchersPath = path.join(__dirname, '..', '.github');
+            const linodeCliToken = core.getInput('LINODE_CLI_TOKEN');
+            console.log(`::set-env name=LINODE_CLI_TOKEN::${linodeCliToken}`);
             console.log(`##[add-matcher]${path.join(matchersPath, 'python.json')}`);
         }
         catch (err) {

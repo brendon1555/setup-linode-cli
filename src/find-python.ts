@@ -4,6 +4,9 @@ import {execSync} from 'child_process'
 
 import * as semver from 'semver'
 
+import * as core from '@actions/core'
+import * as tc from '@actions/tool-cache'
+
 let cacheDirectory = process.env['RUNNER_TOOLSDIRECTORY'] || ''
 
 if (!cacheDirectory) {
@@ -20,9 +23,6 @@ if (!cacheDirectory) {
   }
   cacheDirectory = path.join(baseLocation, 'actions', 'cache')
 }
-
-import * as core from '@actions/core'
-import * as tc from '@actions/tool-cache'
 
 const IS_WINDOWS = process.platform === 'win32'
 
@@ -123,9 +123,9 @@ async function useCpythonVersion(
     // Add --user directory
     // `installDir` from tool cache should look like $AGENT_TOOLSDIRECTORY/Python/<semantic version>/x64/
     // So if `findLocalTool` succeeded above, we must have a conformant `installDir`
-    const version = path.basename(path.dirname(installDir))
-    const major = semver.major(version)
-    const minor = semver.minor(version)
+    const version_ = path.basename(path.dirname(installDir))
+    const major = semver.major(version_)
+    const minor = semver.minor(version_)
 
     const userScriptsDir = path.join(
       process.env['APPDATA'] || '',
@@ -139,7 +139,7 @@ async function useCpythonVersion(
 }
 
 /** Convert versions like `3.8-dev` to a version like `>= 3.8.0-a0`. */
-function desugarDevVersion(versionSpec: string) {
+function desugarDevVersion(versionSpec: string): string {
   if (versionSpec.endsWith('-dev')) {
     const versionRoot = versionSpec.slice(0, -'-dev'.length)
     return `>= ${versionRoot}.0-a0`
@@ -153,7 +153,7 @@ function desugarDevVersion(versionSpec: string) {
  * This is the one part of Python versioning that does not look like semantic versioning, which specifies `3.7.0-b2`.
  * If the version spec contains prerelease versions, we need to convert them to the semantic version equivalent.
  */
-export function pythonVersionToSemantic(versionSpec: string) {
+export function pythonVersionToSemantic(versionSpec: string): string {
   const prereleaseVersion = /(\d+\.\d+\.\d+)((?:a|b|rc)\d*)/g
   return versionSpec.replace(prereleaseVersion, '$1-$2')
 }
@@ -172,7 +172,7 @@ export async function findPythonVersion(
   }
 }
 
-export async function enableAllPythonVersions() {
+export async function enableAllPythonVersions(): Promise<void> {
   core.debug('Starting the enabling')
   usePyPy(2, 'x64')
   usePyPy(3, 'x64')
