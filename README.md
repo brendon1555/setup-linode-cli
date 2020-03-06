@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
+  <a href="https://github.com/brendon1555/setup-linode-cli/actions"><img alt="typescript-action status" src="https://github.com/brendon1555/setup-linode-cli/workflows/build-test/badge.svg"></a>
 </p>
 
 ![linode-logo](.github/linode-logo.svg)
