@@ -27,7 +27,7 @@
   "author": "Brendon1555",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.5",
+    "@actions/core": "^1.2.6",
     "@actions/tool-cache": "^1.6.0",
     "@types/semver": "^7.3.3",
     "semver": "^7.3.2"
