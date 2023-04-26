@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 'pypy2.7'
     - run: |
         npm install
         npm run all
@@ -18,6 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 'pypy2.7'
     - uses: ./
       with: 
         LINODE_CLI_TOKEN:  ${{ secrets.LINODE_CLI_TOKEN }}

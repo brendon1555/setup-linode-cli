@@ -16,6 +16,10 @@ jobs:
   job-name:
     steps:
     - uses: actions/checkout@master
+    - uses: actions/setup-python@v4
+      # Important! Install Python/PyPy of your choice
+      with:
+        python-version: 'pypy2.7'
     - name: Setup Linode cli
       uses: gurucomkz/setup-linode-cli@master
       with:

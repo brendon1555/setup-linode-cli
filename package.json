@@ -1,6 +1,6 @@
 {
   "name": "setup-linode-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "description": "Github Action to add Linode cli to your workflow",
   "main": "lib/setup-python.js",
@@ -36,7 +36,7 @@
     "@types/jest": "^26.0.13",
     "@types/node": "^14.6.4",
     "@typescript-eslint/parser": "^4.1.0",
-    "@vercel/ncc": "^0.24.0",
+    "@vercel/ncc": "^0.36.1",
     "eslint": "^7.8.1",
     "eslint-plugin-github": "^4.1.1",
     "eslint-plugin-jest": "^24.0.0",
