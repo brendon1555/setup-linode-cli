@@ -1,6 +1,6 @@
-name: 'Linode cli'
+name: 'Linode cli tools'
 description: 'Make the Linode cli available to your workflow'
-author: 'Brendon Lees'
+author: 'Sergey Shevchenko'
 inputs:
   LINODE_CLI_TOKEN:
     description: 'linode cli token'
