@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/brendon1555/setup-linode-cli/actions"><img alt="typescript-action status" src="https://github.com/brendon1555/setup-linode-cli/workflows/build-test/badge.svg"></a>
+  <a href="https://github.com/gurucomkz/setup-linode-cli/actions"><img alt="typescript-action status" src="https://github.com/gurucomkz/setup-linode-cli/workflows/build-test/badge.svg"></a>
 </p>
 
 ![linode-logo](.github/linode-logo.svg)
@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Setup Linode cli
-      uses: brendon1555/setup-linode-cli@master
+      uses: gurucomkz/setup-linode-cli@master
       with:
         LINODE_CLI_TOKEN: ${{ secrets.LINODE_CLI_TOKEN }}
     - run: linode-cli --help
@@ -26,3 +26,7 @@ jobs:
 ## License
 
 The scripts and documentation in this project are released under the [MIT License](LICENSE)
+
+## Credits
+
+Big thanks for the [original repo](https://github.com/brendon1555/setup-linode-cli) to [brendon1555](https://github.com/brendon1555). 
