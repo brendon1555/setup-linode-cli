@@ -1,3 +1,5 @@
+# DEPRECATED :no_entry: See the official GitHub Action for Linode CLI at https://github.com/linode/action-linode-cli
+
 <p align="center">
   <a href="https://github.com/brendon1555/setup-linode-cli/actions"><img alt="typescript-action status" src="https://github.com/brendon1555/setup-linode-cli/workflows/build-test/badge.svg"></a>
 </p>
